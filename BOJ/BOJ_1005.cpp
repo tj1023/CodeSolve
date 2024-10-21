@@ -16,7 +16,7 @@ int main() {
 	cin >> t;
 	for (int i = 0; i < t; i++) {
 		cin >> n >> k;
-		Node nodes[n + 1000000];	// 문제의 부분 의도상 n + 1로 돼야하지만 outofbounds 뜸
+		vector<Node> nodes(n + 1);	// 정적 배열 크기에 변수를 넣어서 이슈 발생 -> 동적으로 바꿈
 		int d[n];
 		for (int j = 0; j < n; j++)
 			cin >> d[j];
@@ -33,7 +33,7 @@ int main() {
 			for (int k = 1; k <= n; k++) {
 				if (nodes[k].degree == 0) {
 					nodes[k].degree = -1;
-					q.push(nodes[k]);	// 원인으로 추정
+					q.push(nodes[k]);
 				}
 			}
 			while (!q.empty()) {
